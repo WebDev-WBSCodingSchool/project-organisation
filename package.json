@@ -1,22 +1,26 @@
 {
-  "name": "project-organisation",
+  "name": "wbs-node-ts-template",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "dist/app.js",
   "type": "module",
   "scripts": {
-    "dev": "node -r dotenv/config --watch index.js",
-    "start": "node index.js"
+    "dev": "node --env-file=.env.development.local --watch --conditions development src/app.ts",
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node --env-file=.env.production.local dist/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.14",
+    "typescript": "^5.8.3"
+  },
   "dependencies": {
     "express": "^5.1.0",
-    "pg": "^8.16.0",
-    "sequelize": "^6.37.7"
-  },
-  "devDependencies": {
-    "dotenv": "^16.5.0"
+    "mongoose": "^8.16.4"
   }
 }
